@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import "./signUp.css"
 
 function Copyright() {
   return (
@@ -53,11 +54,12 @@ export default function SignUp() {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
+        <img className="rgbLogo" src="https://99designs-blog.imgix.net/blog/wp-content/uploads/2019/06/RBG-2-column.png"/>
+        {/* <Avatar className={classes.avatar}> */}
+          {/* <LockOutlinedIcon /> */}
+        {/* </Avatar> */}
         <Typography component="h1" variant="h5">
-        <h1>Welcome to the Great RGB Game. </h1>
+        <strong>Welcome to the Great RGB Game</strong> 
             <p>Sign Up to start playing</p>
         </Typography>
         <form className={classes.form} noValidate>
@@ -109,10 +111,7 @@ export default function SignUp() {
               />
             </Grid>
             <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
-              />
+              
             </Grid>
           </Grid>
           <Button
@@ -134,7 +133,7 @@ export default function SignUp() {
         </form>
       </div>
       <Box mt={5}>
-        <Copyright />
+        {/* <Copyright /> */}
       </Box>
     </Container>
   );
