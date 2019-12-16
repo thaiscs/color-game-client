@@ -1,12 +1,14 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import SignUp from "./SignUp/SignUp"
+import React from "react";
+import "./App.css";
+import SignUpContainer from "./components/SignUp/SignUpContainer";
+import { Route, Switch, Link, Redirect } from "react-router-dom";
+import LoginPage from "./components/Login/LoginPage";
 
 function App() {
   return (
     <div className="App">
-     <SignUp/>
+      <Route exact path="/" component={SignUpContainer} />
+      <Route exact path="/login" component={LoginPage} />
     </div>
   );
 }
