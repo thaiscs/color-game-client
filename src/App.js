@@ -4,6 +4,8 @@ import SignUpContainer from "./components/SignUp/SignUpContainer";
 import { Route } from "react-router-dom";
 import LoginPage from "./components/Login/LoginPage";
 import superagent from "superagent";
+import { connect } from "react-redux";
+import Lobby from "./components/Lobby/Lobby";
 
 // global EventSource
 
@@ -19,6 +21,7 @@ class App extends Component {
       const { data } = event;
       const action = JSON.parse(data);
       console.log(action);
+      this.props.dispatch(action);
     };
   }
   onSubmit = async event => {
@@ -46,8 +49,10 @@ class App extends Component {
         </form>
         <Route exact path="/" component={SignUpContainer} />
         <Route exact path="/login" component={LoginPage} />
+        <Route exact path="/gameroom" component={Lobby} />
       </div>
     );
   }
 }
-export default App;
+
+export default connect()(App);
