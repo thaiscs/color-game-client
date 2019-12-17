@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { login } from "./action";
+import { Redirect } from "react-router-dom";
 
 class LoginPage extends React.Component {
   state = {
@@ -23,6 +24,10 @@ class LoginPage extends React.Component {
   };
 
   render() {
+    if (this.props.userLoggedIn !== null) {
+      return <Redirect to="/gameroom" />;
+    }
+
     return (
       <div>
         <header>
@@ -61,5 +66,10 @@ class LoginPage extends React.Component {
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    userLoggedIn: state.loggedIn.accessToken
+  };
+};
 
-export default connect()(LoginPage);
+export default connect(mapStateToProps)(LoginPage);
