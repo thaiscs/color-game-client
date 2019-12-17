@@ -9,7 +9,7 @@ import superagent from "superagent";
 
 class App extends Component {
   state = {
-    text: ""
+    name: ""
   };
   url = "http://localhost:4000";
   stream = new EventSource(`${this.url}/stream`);
@@ -26,7 +26,7 @@ class App extends Component {
     try {
       const response = await superagent
         .post(`${this.url}/gameroom`)
-        .send({ name: this.state.text });
+        .send({ name: this.state.name });
       console.log("response:", response);
     } catch (error) {
       console.warn("error:", error);
@@ -35,13 +35,13 @@ class App extends Component {
   onChange = event => {
     console.log("onChange typing:", this.state);
     const { value } = event.target;
-    this.setState({ text: value });
+    this.setState({ name: value });
   };
   render() {
     return (
       <div className="App">
         <form onSubmit={this.onSubmit}>
-          <input type="text" onChange={this.onChange} value={this.state.text} />
+          <input type="text" onChange={this.onChange} value={this.state.name} />
           <button>Submit</button>
         </form>
         <Route exact path="/" component={SignUpContainer} />
