@@ -29,6 +29,7 @@ class LoginPage extends React.Component {
           <img
             className="rgbLogo"
             src="https://99designs-blog.imgix.net/blog/wp-content/uploads/2019/06/RBG-2-column.png"
+            alt="rgbLogo"
           />
         </header>
         <strong>Welcome to the Great RGB Game</strong>
