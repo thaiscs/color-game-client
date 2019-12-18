@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { signUp } from "./action";
 import "./signUp.css";
 import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 class SignUpContainer extends Component {
   state = {
@@ -24,7 +25,12 @@ class SignUpContainer extends Component {
     console.log("handelSubmit in SignUp:");
     const { name, email, password } = this.state;
     this.props.dispatch(signUp(name, email, password));
-    this.setState({ name: "", email: "", password: "" });
+
+    if (name && email && password) {
+      console.log("TEST");
+
+      return <Redirect to="/login" />;
+    }
   };
 
   render() {

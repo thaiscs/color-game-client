@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import "./App.css";
 import SignUpContainer from "./components/SignUp/SignUpContainer";
-import { Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import LoginPage from "./components/Login/LoginPage";
 import superagent from "superagent";
 import { connect } from "react-redux";
 import Lobby from "./components/Lobby/Lobby";
+import DetailPage from "./components/Details/DetailPage";
 
 // global EventSource
 
@@ -49,7 +50,10 @@ class App extends Component {
         </form>
         <Route exact path="/" component={SignUpContainer} />
         <Route exact path="/login" component={LoginPage} />
-        <Route exact path="/gameroom" component={Lobby} />
+        <Switch>
+          <Route exact path="/gameroom" component={Lobby} />
+          <Route path="/detailpage/:id" component={DetailPage} />
+        </Switch>
       </div>
     );
   }
