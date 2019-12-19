@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import superagent from "superagent";
 
 class DetailPage extends Component {
-  url = "https://protected-shelf-23100.herokuapp.com/";
+  url = "http://protected-shelf-23100.herokuapp.com/";
 
   onClick = async gameroomId => {
     console.log("gameroomId test:", gameroomId);
