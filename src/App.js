@@ -14,7 +14,7 @@ class App extends Component {
   state = {
     name: ""
   };
-  url = "http://protected-shelf-23100.herokuapp.com/";
+  url = "http://protected-shelf-23100.herokuapp.com";
   stream = new EventSource(`${this.url}/stream`);
 
   componentDidMount() {
