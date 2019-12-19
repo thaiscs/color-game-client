@@ -3,47 +3,40 @@ import { connect } from "react-redux";
 import superagent from "superagent";
 
 class DetailPage extends Component {
-  //   url = "http://localhost:4000";
+  url = "http://localhost:4000";
 
-  //   onClick = async gameroomId => {
-  //     console.log("gameroomId test:", gameroomId);
-  //     const { userData } = this.props;
+  onClick = async gameroomId => {
+    console.log("gameroomId test:", gameroomId);
+    const { userData } = this.props;
 
-  //     try {
-  //       const response = await superagent.put(`${this.url}/join`).send({
-  //         gameroomId,
-  //         userId: userData.id
-  //       });
+    try {
+      const response = await superagent.put(`${this.url}/join`).send({
+        gameroomId,
+        userId: userData.id
+      });
 
-  //       console.log("response test:", response);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
+      console.log("response test:", response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   render() {
     console.log("Detail Page:", this.props);
     const id = this.props.match.params.id;
     const { gamerooms, userData } = this.props;
-    const game = gamerooms.filter(gameroom => {
-      if (gameroom.id == id) {
-        return gameroom.name;
-      }
-    });
-    const gameDetails = game.name;
-    console.log(game[0]);
-
-    // const list = gamerooms.map(gameroom => (
-    //     <div key={gameroom.id}>
-    //       <Link to={`detailpage/${gameroom.id}`}>{gameroom.name}</Link>
-
-    //       <button onClick={() => this.onClick(gameroom.id)}>Join</button>
-    //     </div>
-    //   ));
+    const game = gamerooms.find(gameroom => gameroom.id === parseInt(id));
 
     return (
       <div>
-        <p>{gameDetails}</p>
+        {game ? (
+          <p>
+            {game.name}
+            <button onClick={() => this.onClick(game.id)}>Join</button>
+          </p>
+        ) : (
+          <p>Loading...</p>
+        )}
       </div>
     );
   }
