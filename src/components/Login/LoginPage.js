@@ -11,13 +11,13 @@ class LoginPage extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log("handelSubmit in LoginPage - local state:", this.state);
+    // console.log("handelSubmit in LoginPage - local state:", this.state);
     const { email, password } = this.state;
     this.props.dispatch(login(email, password));
   };
 
   handleChange = event => {
-    console.log("getting input:", this.state);
+    // console.log("getting input:", this.state);
     this.setState({
       [event.target.name]: event.target.value
     });

@@ -7,6 +7,7 @@ import superagent from "superagent";
 import { connect } from "react-redux";
 import Lobby from "./components/Lobby/Lobby";
 import DetailPage from "./components/Details/DetailPage";
+import GameApp from "./components/Game/GameApp";
 
 // global EventSource
 
@@ -14,7 +15,9 @@ class App extends Component {
   state = {
     name: ""
   };
-  url = "https://protected-shelf-23100.herokuapp.com";
+  // url = "https://protected-shelf-23100.herokuapp.com";
+  url = "http://localhost:4000";
+
   stream = new EventSource(`${this.url}/stream`);
 
   componentDidMount() {
@@ -52,8 +55,9 @@ class App extends Component {
         <Route exact path="/login" component={LoginPage} />
         <Switch>
           <Route exact path="/gameroom" component={Lobby} />
-          <Route path="/detailpage/:id" component={DetailPage} />
+          <Route exact path="/join" component={GameApp} />
         </Switch>
+        <Route path="/detailpage/:id" component={DetailPage} />
       </div>
     );
   }

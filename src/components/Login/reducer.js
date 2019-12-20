@@ -1,14 +1,12 @@
 const initialState = {
-  accessToken: null,
-  userData: null
+  accessToken: null
 };
 
 export default function LoginReducer(state = initialState, action = {}) {
   switch (action.type) {
     case "USER_LOGGED_IN": {
       return {
-        accessToken: action.payload.accessToken,
-        userData: action.payload.accessToken
+        accessToken: action.payload
       };
     }
     default: {

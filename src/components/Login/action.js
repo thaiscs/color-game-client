@@ -11,9 +11,7 @@ export function login(email, password) {
     })
       .then(data => {
         console.log("data?", data);
-        const accessToken = data.jwt;
-        const userData = data.userData;
-        dispatch(userLoggedIn(accessToken, userData));
+        dispatch(userLoggedIn(data.jwt));
       })
 
       .catch(err => console.log("err", err));
@@ -24,8 +22,7 @@ export function userLoggedIn(accessToken, userData) {
   return {
     type: "USER_LOGGED_IN",
     payload: {
-      accessToken,
-      userData
+      accessToken
     }
   };
 }

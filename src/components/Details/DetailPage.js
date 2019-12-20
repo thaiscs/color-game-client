@@ -3,10 +3,12 @@ import { connect } from "react-redux";
 import superagent from "superagent";
 
 class DetailPage extends Component {
-  url = "https://protected-shelf-23100.herokuapp.com";
+  // url = "https://protected-shelf-23100.herokuapp.com";
+
+  url = "http://localhost:4000";
 
   onClick = async gameroomId => {
-    console.log("gameroomId test:", gameroomId);
+    // console.log("gameroomId test:", gameroomId);
     const { userData } = this.props;
 
     try {
@@ -15,7 +17,13 @@ class DetailPage extends Component {
         userId: userData.id
       });
 
-      console.log("response test:", response);
+      // console.log("response test:", response);
+
+      if (response.statusCode === 200) {
+        // console.log("statusCode", this.props.history);
+
+        this.props.history.push("/join");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -26,7 +34,6 @@ class DetailPage extends Component {
     const id = this.props.match.params.id;
     const { gamerooms } = this.props;
     const game = gamerooms.find(gameroom => gameroom.id === parseInt(id));
-
     return (
       <div>
         {game ? (
@@ -45,7 +52,7 @@ class DetailPage extends Component {
 function mapStateToProps(state) {
   return {
     gamerooms: state.allGamerooms,
-    userData: state.loggedIn
+    userData: state.userData
   };
 }
 
