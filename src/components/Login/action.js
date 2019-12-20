@@ -11,18 +11,21 @@ export function login(email, password) {
     })
       .then(data => {
         console.log("data?", data);
-        dispatch(userLoggedIn(data.jwt));
+        const accessToken = data.jwt;
+        const userData = data.userData;
+        dispatch(userLoggedIn(accessToken, userData));
       })
 
       .catch(err => console.log("err", err));
   };
 }
 
-export function userLoggedIn(accessToken) {
+export function userLoggedIn(accessToken, userData) {
   return {
     type: "USER_LOGGED_IN",
     payload: {
-      accessToken
+      accessToken,
+      userData
     }
   };
 }

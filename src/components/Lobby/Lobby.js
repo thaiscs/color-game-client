@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 class Lobby extends Component {
   render() {
     console.log("props:", this.props);
-    const { gamerooms, userData } = this.props;
-    console.log("userData:", userData);
+    const { gamerooms } = this.props;
 
     const list = gamerooms.map(gameroom => (
       <div key={gameroom.id}>

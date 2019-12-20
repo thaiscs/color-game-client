@@ -24,7 +24,7 @@ class DetailPage extends Component {
   render() {
     console.log("Detail Page:", this.props);
     const id = this.props.match.params.id;
-    const { gamerooms, userData } = this.props;
+    const { gamerooms } = this.props;
     const game = gamerooms.find(gameroom => gameroom.id === parseInt(id));
 
     return (
@@ -45,7 +45,7 @@ class DetailPage extends Component {
 function mapStateToProps(state) {
   return {
     gamerooms: state.allGamerooms,
-    userData: state.userData
+    userData: state.loggedIn
   };
 }
 
